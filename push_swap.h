@@ -17,6 +17,22 @@
 # include <unistd.h>
 # include <stdio.h>
 
+typedef struct s_list
+{
+	int	*array;
+	int	size;
+}t_list;
 
+
+int		find_highest(t_list *stack);
+void	sort_small(int **array, int size);
+void	reverse_rotate_func(t_list **stack);
+void	rotate_func(t_list **stack);
+void	swap_func(t_list **stack);
+int		is_sorted(t_list *stack);
+int		check_repeat(int *arr, int size);
+int		ft_isdigit(int c);
+void	push_func(int **src, int **dest, int *size);
+int		ft_atoi(const char *str);
 
 #endif
