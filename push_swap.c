@@ -3,86 +3,121 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 23:38:05 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/12 13:56:47 by muyumak          ###   ########.fr       */
+/*   Created: 2023/01/16 02:31:17 by muyumak           #+#    #+#             */
+/*   Updated: 2023/01/16 02:31:17 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_if_sorted(int *arr, int argc)
+void	push_func(int **src, int **dest)
 {
-	return (0);
-} 
+	int	*tmp;
 
-void	stack_addback(t_stack **stack, t_stack *new)
-{
-	t_stack	*last;
-	
-	if (!new)
-		return ;
-	if (!stack)
-	{
-		*stack = new;
-		return ;
-	}
-	last = get_stack_bottom(*stack);
-	last->next = new;
+	tmp = *src + 1;
+	*dest = *src;
+	*src = tmp;
 }
 
-t_stack	*stack_new(int value)
+void	swap_func(int *arr)
 {
-	t_stack	*new;
+	int	tmp;
 
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	tmp = *arr;
+	*arr = *(arr + 1);
+	*(arr + 1) = tmp;
+	printf("sa\n");
 }
 
-t_stack	*init_stack(int argc, char **argv)
+void	reverse_rotate_func(int **arr, int size)
 {
-	t_stack	*stack;
-	int	i;
-	int	nb;
+	int	*temp;
+	int	*temp_arr;
+	int	last;
 
+	last = *(*arr + size - 1);
+	temp = (*arr + size - 1);
+	temp_arr = *arr;
+	temp = temp + 1;
+	temp = temp_arr;
+	temp = temp - 1;
+	*temp = last;
+	*arr = temp;
+	*(*arr + size) = 0;
+	printf("rra\n");
+}
 
-	nb = 0;
-	i = 1;
-	while (i < argc)
-	{
-		nb = ft_atoi(argv[i]);
-		if (i == 1)
-			stack = stack_new(nb);
+void	rotate_func(int **arr, int size)
+{
+	int	tmp;
+
+	tmp = **arr;
+	*arr = ++*arr;
+	*(*arr + (size - 1)) = tmp;
+	printf("ra\n");
+}
+
+int	find_highest(int *arr, int size)
+{
+	int	index;
+	int	highest;
+
+	while (--size >= 1)
+		if (arr[size] >= arr[size - 1])
+			highest = arr[size];
 		else
-			stack_addback(&stack, stack_new(nb));
-		i++;
-	}
-	return (stack);
+			highest = arr[size - 1];
+	return (highest);
 }
 
-int main(int argc, char **argv)
+void	sort(int **array, int size)
 {
-	t_stack	*stack;
-	t_stack	*stack_a;
-	int	i;
+	int	highest;
 
-	stack = malloc(sizeof(t_stack));
-	stack_a = malloc(sizeof(t_stack));
-	stack_a = stack;
-	while (argc < 2)
-		return (0);
-	stack = init_stack(argc, argv);
-	sa_func(stack);
-	ra_func(&stack);
-	while (stack != NULL)
+	highest = find_highest(*array, size);
+	printf("highest: %d\n", find_highest(*array, size));
+	if (*array[0] == highest)
+		rotate_func(array, size);
+	else if (*array[1] == highest)
+		reverse_rotate_func(array, size);
+	if (*array[0] > *array[1])
+		swap_func(*array);
+}
+
+int main()
+{
+
+	int	*arr;
+	int	*brr;
+	int	size;
+
+	arr = malloc(sizeof(int) * 3);
+	brr = malloc(sizeof(int) * 3);
+	brr[0] = 1;
+	arr[0] = 2;
+	arr[1] = 1;
+	arr[2] = 3;
+	size = 3;
+	//rotate_func(&arr, size);
+	//swap_func(arr, size);
+	//push_func(&arr, &brr);
+	//reverse_rotate_func(&arr, size);
+	while (--size >= 0)
 	{
-		printf("%d\n", stack->value);
-		stack = stack->next;
+		printf("a%d: %d\n", size, arr[size]);
 	}
-	return (0);	
+	size = 3;
+	sort(&arr, size);
+	while (--size >= 0)
+	{
+		printf("a%d: %d\n", size, arr[size]);
+	}
+	/*printf("b0: %d\n", brr[0]);
+	printf("b1: %d\n", brr[1]);
+	printf("a3: %d\n", arr[3]);
+	printf("a4: %d\n", arr[4]);*/
+	//printf("highest: %d\n", find_highest(arr, size));
+	return (0);
 }
