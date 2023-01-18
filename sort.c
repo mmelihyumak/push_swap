@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 03:38:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/16 03:38:17 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/18 01:01:25 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_sorted(t_list *stack)
 	while (++i < stack->size -1)
 		if (stack->array[i] > stack->array[i + 1])
 			return (0);
-	printf("Array is already sorted!\n");
+	//printf("Array is already sorted!\n");
 	return (1);
 }
 
@@ -38,18 +38,46 @@ int	find_highest(t_list *stack)
 	return (highest);
 }
 
-void	sort_small(int **array, int size)
+void	algorithm(t_list **stack)
 {
-	/*int	highest;
-
-	if (is_sorted(*array, size))
+	int	highest;
+	int	smallest;
+	
+	if (is_sorted(*stack))
 		return ;
-	highest = find_highest(*array, size);
-	printf("highest: %d\n", highest);
-	if (array[0][0] == highest)
-		rotate_func(array, size);
-	else if (array[0][1] == highest)
-		reverse_rotate_func(array, size);
-	if (array[0][0] > array[0][1])
-		swap_func(array);*/
+	highest = find_highest(*stack);
+	smallest = find_smallest(*stack);
+	//printf("smallest: %d\n", smallest);
+	if ((*stack)->array[0] == highest)
+		rotate_func(stack);
+	else if ((*stack)->array[1] == highest)
+		reverse_rotate_func(stack);
+	if ((*stack)->array[0] > (*stack)->array[1])
+		swap_func(stack);
+}
+
+int	find_smallest(t_list *stack)
+{
+	int	i;
+	int	smallest;
+
+	i = 0;
+	smallest = stack->array[0];
+	while (++i < stack->size)
+		if (smallest > stack->array[i])
+			smallest = stack->array[i];
+	return (smallest);
+}
+
+void	sort_bigger(t_list **stack_a, t_list **stack_b)
+{
+	while ((*stack_a)->size != 3)
+			push_func(stack_a, stack_b);
+}
+
+void	sort_small(t_list **stack_a, t_list **stack_b)
+{
+	if ((*stack_a)->size > 3)
+		sort_bigger(stack_a, stack_b);
+	algorithm(stack_a);
 }
