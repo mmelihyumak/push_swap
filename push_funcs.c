@@ -18,10 +18,25 @@ void	push_func(t_list **src, t_list **dest)
 	int	i;
 
 	tmp = (*src)->array + 1;
-	
 	(*dest)->array[(*dest)->size] = (*src)->array[0];
 	(*src)->array = tmp;
 	(*dest)->size++;
 	(*src)->size--;
 	reverse_rotate_func(dest);
+	find_highest(src);
+	find_smallest(src);
+	find_highest(dest);
+	find_smallest(dest);
+}
+
+void	do_pa(t_list **src, t_list **dest)
+{
+	push_func(src, dest);
+	write(1, "pa\n", 3);
+}
+
+void	do_pb(t_list **src, t_list **dest)
+{
+	push_func(src, dest);
+	write(1, "pb\n", 3);
 }

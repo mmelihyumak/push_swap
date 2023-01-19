@@ -12,28 +12,6 @@
 
 #include "push_swap.h"
 
-void	reverse_rotate_func(t_list **stack)
-{
-	int	*tmp;
-	int	i;
-	int	j;
-	int	last;
-	int	size;
-
-	size =(*stack)->size;
-	last = (*stack)->array[size - 1];
-	tmp = malloc(sizeof(int) * size);
-	if (!tmp)
-		return ;
-	tmp[0] = last;
-	i = 0;
-	j = -1;
-	while (++j < size - 1)
-		tmp[++i] = (*stack)->array[j];
-	(*stack)->array = tmp;
-	printf("rra\n");
-}
-
 void	rotate_func(t_list **stack)
 {
 	int	tmp;
@@ -43,5 +21,23 @@ void	rotate_func(t_list **stack)
 	tmp = (*stack)->array[0];
 	(*stack)->array = (*stack)->array + 1;
 	(*stack)->array[size - 1] = tmp;
-	printf("ra\n");
+}
+
+void	do_ra(t_list *stack_a)
+{
+	rotate_func(&stack_a);
+	write(1, "ra\n", 3);
+}
+
+void	do_rb(t_list *stack_b)
+{
+	rotate_func(&stack_b);
+	write(1, "rb\n", 3);
+}
+
+void	do_rr(t_list *stack_a, t_list *stack_b)
+{
+	rotate_func(&stack_a);
+	rotate_func(&stack_b);
+	write(1, "rr\n", 3);
 }
