@@ -33,8 +33,7 @@ void	init_stack_a(t_list **stack, int size, char **argv)
 		i++;
 	}
 	(*stack)->size = size;
-	find_highest(stack);
-	find_smallest(stack);
+	find_highest(*stack);
 }
 
 int main(int argc, char **argv)
@@ -67,6 +66,8 @@ int main(int argc, char **argv)
 		sort_small(&stack_a);
 	else if (stack_a->size > 3 && stack_a->size < 6)
 		sort_five(&stack_a, &stack_b);
+	print_stack(stack_a);
+	printf("\nb\n");
 	print_stack(stack_b);
 	return (0);
 }

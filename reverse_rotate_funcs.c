@@ -31,6 +31,7 @@ void	reverse_rotate_func(t_list **stack)
 	while (++j < size - 1)
 		tmp[++i] = (*stack)->array[j];
 	(*stack)->array = tmp;
+	find_highest(*stack);
 }
 
 void	do_rra(t_list *stack_a)

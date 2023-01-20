@@ -23,10 +23,10 @@ typedef struct s_list
 	int	size;
 	int	index_highest;
 	int	index_smallest;
-
 }t_list;
 
-void	find_highest(t_list **stack);
+void	find_smallest(t_list *stack);
+void	find_highest(t_list *stack);
 void	sort_small(t_list **stack_a);
 void	reverse_rotate_func(t_list **stack);
 void	rotate_func(t_list **stack);
@@ -37,7 +37,6 @@ int		ft_isdigit(int c);
 void	push_func(t_list **src, t_list **dest);
 int		ft_atoi(const char *str);
 void	sort_bigger(t_list **stack_a, t_list **stack_b);
-void	find_smallest(t_list **stack);
 char	**ft_split(const char *s, char c);
 int		check_space(char *first_arg);
 int		check_digits(char *arg);

@@ -19,6 +19,7 @@ void	swap_func(t_list **stack)
 	tmp = (*stack)->array[0];
 	(*stack)->array[0] = (*stack)->array[1];
 	(*stack)->array[1] = tmp;
+	find_highest(*stack);
 }
 
 void	do_sa(t_list *stack_a)

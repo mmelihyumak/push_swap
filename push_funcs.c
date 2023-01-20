@@ -23,10 +23,8 @@ void	push_func(t_list **src, t_list **dest)
 	(*dest)->size++;
 	(*src)->size--;
 	reverse_rotate_func(dest);
-	find_highest(src);
-	find_smallest(src);
-	find_highest(dest);
-	find_smallest(dest);
+	find_highest(*src);
+	find_highest(*dest);
 }
 
 void	do_pa(t_list **src, t_list **dest)

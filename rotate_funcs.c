@@ -21,6 +21,7 @@ void	rotate_func(t_list **stack)
 	tmp = (*stack)->array[0];
 	(*stack)->array = (*stack)->array + 1;
 	(*stack)->array[size - 1] = tmp;
+	find_highest(*stack);
 }
 
 void	do_ra(t_list *stack_a)
