@@ -23,6 +23,8 @@ int	check_args(int argc, char **argv)
 		splitted = ft_split(argv[1], ' ');
 		if (split_len(splitted) == 1)
 		{
+			//if (ft_atoi(splitted[0]) < -2147483648 || ft_atoi(splitted[0]) > 2147483647)
+				//write(2, "Error\n", 6);
 			free(splitted);
 			return (0);
 		}

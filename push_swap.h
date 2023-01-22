@@ -35,7 +35,7 @@ int		is_sorted(t_list *stack);
 int		check_repeat(char **splitted);
 int		ft_isdigit(int c);
 void	push_func(t_list **src, t_list **dest);
-int		ft_atoi(const char *str);
+long	ft_atoi(char *str);
 void	sort_bigger(t_list **stack_a, t_list **stack_b);
 char	**ft_split(const char *s, char c);
 int		check_space(char *first_arg);
@@ -58,5 +58,8 @@ int		check_all(int argc, char **argv);
 int		check_duplicate(t_list *stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
 void	print_stack(t_list *stack);
+int 	control(char **argv, int argc);
+char	**set_argv(char **argv, int argc);
+int	check_numbers(char **splitted);
 
 #endif

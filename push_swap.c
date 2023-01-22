@@ -25,11 +25,12 @@ void	init_stack_a(t_list **stack, int size, char **argv)
 {
 	int	i;
 
+	//printf(" argv: %s\n", argv[0]);
 	(*stack)->array = malloc(sizeof(int) * size);
 	i = 0;
 	while (argv[i])
 	{
-		(*stack)->array[i] = ft_atoi(argv[i]);
+		(*stack)->array[i] = (int)ft_atoi(argv[i]);
 		i++;
 	}
 	(*stack)->size = size;
@@ -58,7 +59,10 @@ int main(int argc, char **argv)
 	}
 	else if (argc > 2)
 	{
-		init_stack_a(&stack_a, argc - 1, argv + 1);
+		splitted = set_argv(argv, argc);
+		if (!check_numbers(splitted))
+			return (0);
+		init_stack_a(&stack_a, control(argv, argc), splitted);
 		if (!check_duplicate(stack_a))
 			return (0);
 	}
@@ -67,9 +71,9 @@ int main(int argc, char **argv)
 	else if (stack_a->size > 3 && stack_a->size < 6)
 		sort_five(&stack_a, &stack_b);
 
-	print_stack(stack_a);
+	/*print_stack(stack_a);
 	printf("\nb\n");
-	print_stack(stack_b);
+	print_stack(stack_b);*/
 	//system("leaks push_swap");
 	return (0);
 }
