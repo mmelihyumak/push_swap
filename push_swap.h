@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:34 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 00:53:28 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/21 17:45:50 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int		split_len(char **splitted);
 int		check_all(int argc, char **argv);
 int		check_duplicate(t_list *stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
+void	print_stack(t_list *stack);
 
 #endif

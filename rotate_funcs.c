@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_funcs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:34:16 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/16 02:34:16 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/22 03:29:33 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 void	rotate_func(t_list **stack)
 {
+	int	*tmp_arr;
 	int	tmp;
-	int	size;
+	int	i;
 
-	size = (*stack)->size;
+	i = -1;
+	tmp_arr = malloc(sizeof(int) * (*stack)->size);
+	while (++i < (*stack)->size - 1)
+		tmp_arr[i] = (*stack)->array[i + 1];
 	tmp = (*stack)->array[0];
-	(*stack)->array = (*stack)->array + 1;
-	(*stack)->array[size - 1] = tmp;
+	free((*stack)->array);
+	(*stack)->array = tmp_arr;
+	(*stack)->array[(*stack)->size - 1] = tmp;
 	find_highest(*stack);
 }
 
@@ -28,6 +33,7 @@ void	do_ra(t_list *stack_a)
 {
 	rotate_func(&stack_a);
 	write(1, "ra\n", 3);
+	
 }
 
 void	do_rb(t_list *stack_b)

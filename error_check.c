@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:20:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 22:20:17 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/21 17:06:20 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	check_args(int argc, char **argv)
 		return (0);
 	else if (argc == 2)
 	{
-		if (check_space(argv[1]) == 0)
-			return (0);
 		splitted = ft_split(argv[1], ' ');
 		if (split_len(splitted) == 1)
 		{

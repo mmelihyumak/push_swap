@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_funcs.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:04:56 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 22:04:56 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/22 03:53:38 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 void	reverse_rotate_func(t_list **stack)
 {
-	int	*tmp;
+	int	*tmp_arr;
 	int	i;
-	int	j;
-	int	last;
-	int	size;
 
-	size =(*stack)->size;
-	last = (*stack)->array[size - 1];
-	tmp = malloc(sizeof(int) * size);
-	if (!tmp)
-		return ;
-	tmp[0] = last;
+	tmp_arr = malloc(sizeof(int) * (*stack)->size);
+	tmp_arr[0] = (*stack)->array[(*stack)->size - 1];
 	i = 0;
-	j = -1;
-	while (++j < size - 1)
-		tmp[++i] = (*stack)->array[j];
-	(*stack)->array = tmp;
+	while (++i < (*stack)->size)
+		tmp_arr[i] = (*stack)->array[i - 1];
+	free((*stack)->array);
+	(*stack)->array = tmp_arr;
 	find_highest(*stack);
 }
 

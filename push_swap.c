@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 09:55:36 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/22 04:05:05 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,14 @@ int main(int argc, char **argv)
 		if (!check_duplicate(stack_a))
 			return (0);
 	}
-	if (stack_a->size == 3)
+	if (stack_a->size <= 3)
 		sort_small(&stack_a);
 	else if (stack_a->size > 3 && stack_a->size < 6)
 		sort_five(&stack_a, &stack_b);
+
 	print_stack(stack_a);
 	printf("\nb\n");
 	print_stack(stack_b);
+	//system("leaks push_swap");
 	return (0);
 }

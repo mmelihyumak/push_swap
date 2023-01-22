@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:57 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 09:55:55 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/21 16:58:14 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,14 @@ int	check_digits(char *arg)
 {
 	int	i;
 
-	i = 0;
-	while (arg[i])
-	{
-		if ((arg[i] < 48 || arg[i] > 57) && arg[i] != ' ')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_space(char *first_arg)
-{
-	int	i;
-
-	if (first_arg[0] == ' ' || first_arg[ft_strlen(first_arg) - 1] == ' ')
-		return (0);
 	i = -1;
-	while (first_arg[++i])
-	{
-		if (first_arg[i] == ' ' && first_arg[i + 1] == ' ')
+	while (arg[++i])
+		if ((arg[i] < 48 || arg[i] > 57) && (arg[i] != ' ' && arg[i] != '-' && arg[i] != '+'))
 			return (0);
-	}
+	i = -1;
+	while (arg[++i])
+		if (arg[i] >= 48 && arg[i] <= 57)
+			if (arg[i + 1] == '-' || arg[i + 1] == '+')
+				return (0);
 	return (1);
 }

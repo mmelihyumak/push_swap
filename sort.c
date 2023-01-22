@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 03:38:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/18 01:01:25 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/22 03:57:40 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	algorithm(t_list **stack)
 	int	highest;
 	int	smallest;
 
-	//printf("highest: %d\n", (*stack)->index_highest);
 	if (is_sorted(*stack))
 		return ;
 	if ((*stack)->index_highest == 0)
@@ -86,25 +85,24 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 
-	i = (*stack_a)->size - 2;
-	if ((*stack_a)->index_smallest == 0 && (*stack_a)->index_highest == 1)
-		do_sa(*stack_a);
-	else if ((*stack_a)->index_highest > (*stack_a)->size / 2)
-		while ((*stack_a)->index_highest != 0)
-			do_rra(*stack_a);
-	else if ((*stack_a)->index_highest <= (*stack_a)->size / 2)
-		while ((*stack_a)->index_highest != 0)
-			do_ra(*stack_a);
-	while (--i != 0)
+	if (is_sorted(*stack_a))
+		return ;
+	i = -1;
+	while (++i < 2)
+	{
+		if ((*stack_a)->index_highest <= (*stack_a)->size / 2)
+			while ((*stack_a)->index_highest)
+				do_ra(*stack_a);
+		else
+			while ((*stack_a)->index_highest)
+				do_rra(*stack_a);
 		do_pb(stack_a, stack_b);
+	}	
 	algorithm(stack_a);
-	i = (*stack_b)->size + 1;
-	while (--i != 0)
+	i = -1;
+	while (++i < 2)
 	{
 		do_pa(stack_b, stack_a);
-		if ((*stack_a)->index_highest == 0)
-			do_ra(*stack_a);
+		do_ra(*stack_a);
 	}
-	if (!is_sorted(*stack_a))
-		do_sa(*stack_a);
 }
