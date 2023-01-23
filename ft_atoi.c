@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:27:13 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/21 16:24:01 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:40:14 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ long	ft_atoi(char *str)
 		sign *= -1;
 		i++;
 	}
-	if (!(str[i] >= 48 && str[i] <= 57))
-	{
-		write(2, "Error\n", 6);
-		exit(0);
-	}
+	check_c(str[i]);
 	while (str[i] && (str[i] >= 48 && str[i] <= 57))
 	{
 		number = (number * 10) + (str[i] - 48);
@@ -42,4 +38,13 @@ long	ft_atoi(char *str)
 	}
 	number *= sign;
 	return (number);
+}
+
+void	check_c(char c)
+{
+	if (!(c >= 48 && c <= 57))
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }

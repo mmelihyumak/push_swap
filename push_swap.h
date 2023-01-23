@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:34 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/21 17:45:50 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:40:27 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	print_stack(t_list *stack);
 int 	control(char **argv, int argc);
 char	**set_argv(char **argv, int argc);
 int	check_numbers(char **splitted);
+void	check_c(char c);
 
 #endif
