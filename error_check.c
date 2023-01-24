@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:20:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 16:09:09 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 19:55:04 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int	check_duplicate(t_list *stack)
 
 int	check_all(int argc, char **argv)
 {
-	int	i;
-
 	if (!check_args(argc, argv))
 		return (0);
 	if (!digits(argv + 1))

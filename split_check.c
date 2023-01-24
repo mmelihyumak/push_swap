@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   split_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muyumak <muyumak@student.42>               +#+  +:+       +#+        */
+/*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 21:30:01 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/22 21:30:01 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 19:56:36 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int control(char **argv, int argc)
+int control(char **argv)
 {
 	char	**strings;
 	int		i;
@@ -30,7 +30,7 @@ int control(char **argv, int argc)
 	return (len);
 }
 
-char	**set_argv(char **argv, int argc)
+char	**set_argv(char **argv)
 {
 	char	**strings;
 	char	**tmp;
@@ -38,7 +38,7 @@ char	**set_argv(char **argv, int argc)
 	int		j;
 	int		k;
 
-	strings = malloc(sizeof(char *) * (control(argv, argc) + 1));
+	strings = malloc(sizeof(char *) * (control(argv) + 1));
 	i = 1;
 	j = 0;
 	k = 0;

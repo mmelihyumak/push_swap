@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:39:56 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/21 17:47:42 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 18:31:15 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	swap_func(t_list **stack)
 	(*stack)->array[0] = (*stack)->array[1];
 	(*stack)->array[1] = tmp;
 	find_highest(*stack);
+	find_smallest(*stack);
 }
 
 void	do_sa(t_list *stack_a)

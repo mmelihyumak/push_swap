@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 03:38:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/22 03:57:40 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/23 23:54:36 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	is_sorted(t_list *stack)
 {
 	int	i;
-	int	number;
 
 	i = -1;
 	while (++i < stack->size - 1)
@@ -62,9 +61,6 @@ void	find_smallest(t_list *stack)
 
 void	algorithm(t_list **stack)
 {
-	int	highest;
-	int	smallest;
-
 	if (is_sorted(*stack))
 		return ;
 	if ((*stack)->index_highest == 0)
@@ -104,5 +100,45 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 	{
 		do_pa(stack_b, stack_a);
 		do_ra(*stack_a);
+	}
+}
+
+int	get_maxbit(t_list *stack_a)
+{
+	int maxbit;
+
+	maxbit = 0;
+	while (stack_a->array[stack_a->index_highest] >> maxbit != 0)
+		maxbit++;
+	return (maxbit);
+}
+
+void	sort_algorithm(t_list **stack_a, t_list **stack_b)
+{
+	int	maxbit;
+	int	i;
+	int	j;
+	int	size;
+		
+	i = 0;
+	size = (*stack_a)->size;
+	maxbit = get_maxbit(*stack_a);
+	while (!is_sorted(*stack_a) && i < maxbit)
+	{
+		j = 0;
+		if (is_sorted(*stack_a))
+			break;
+		while (j < size)
+		{
+			if ((((*stack_a)->array[0] >> i) & 1) == 1)
+				do_ra(*stack_a);
+			else
+				do_pb(stack_a, stack_b);
+			j++;
+		}
+		//printf("i");
+		while ((*stack_b)->size != 0)
+			do_pa(stack_b, stack_a);
+		i++;
 	}
 }
