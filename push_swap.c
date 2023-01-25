@@ -18,7 +18,54 @@ void	print_stack(t_list *stack)
 
 	i = -1;
 	while (++i < stack->size)
+		printf("%d\n", stack->sortindex[i]);
+	i = -1;
+	while (++i < stack->size)
 		printf("%d\n", stack->array[i]);
+}
+
+void	sortindexx(t_list **stack)
+{
+	int	size;
+	int	i;
+	int	j;
+
+	size = (*stack)->size;
+	i = 0;
+	init_sortindex(stack);
+	while (size >= 0 && (*stack)->sortindex[i] != size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if ((*stack)->sortindex[i] == (*stack)->sortindex[j])
+				if ((*stack)->array[i] > (*stack)->array[j])
+				{
+					(*stack)->sortindex[i] += 1;
+					break ;
+				}
+				else if ((*stack)->array[i] < (*stack)->array[j])
+				{
+					(*stack)->sortindex[j] += 1;
+					break ;
+				}
+			j++;
+		}
+		i++;
+		if (i > size)
+			i = 0;
+	}
+}
+
+void	init_sortindex(t_list **stack)
+{
+	int	i;
+	int	size;
+
+	size = (*stack)->size;
+	i = -1;
+	while (++i < size)
+		(*stack)->sortindex[i] = 0;
 }
 
 void	init_stack_a(t_list **stack, int size, char **argv)
@@ -26,6 +73,7 @@ void	init_stack_a(t_list **stack, int size, char **argv)
 	int	i;
 
 	(*stack)->array = malloc(sizeof(int) * size);
+	(*stack)->sortindex = malloc(sizeof(int) * size);
 	i = 0;
 	while (argv[i])
 	{
@@ -35,6 +83,7 @@ void	init_stack_a(t_list **stack, int size, char **argv)
 	(*stack)->size = size;
 	find_highest(*stack);
 	find_smallest(*stack);
+	init_sortindex(stack);
 }
 
 int main(int argc, char **argv)
@@ -70,9 +119,11 @@ int main(int argc, char **argv)
 	else if (stack_a->size > 3 && stack_a->size < 6)
 		sort_five(&stack_a, &stack_b);
 	else if (stack_a->size > 5)
-		printf("%d\n", (stack_a->array[0] >> 1));
-		//sort_algorithm(&stack_a, &stack_b);
-	//print_stack(stack_a);
+	{
+		sortindexx(&stack_a);
+		sort_algorithm(&stack_a, &stack_b);
+	}
+	print_stack(stack_a);
 	//printf("\nb\n");
 	//print_stack(stack_b);
 	//system("leaks push_swap");

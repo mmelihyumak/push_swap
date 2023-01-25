@@ -34,7 +34,6 @@ void	do_ra(t_list *stack_a)
 {
 	rotate_func(&stack_a);
 	write(1, "ra\n", 3);
-	
 }
 
 void	do_rb(t_list *stack_b)

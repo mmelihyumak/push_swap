@@ -20,6 +20,9 @@ int	is_sorted(t_list *stack)
 	while (++i < stack->size - 1)
 		if (stack->array[i] > stack->array[i + 1])
 			return (0);
+	while (++i < stack->size - 1)
+		if (stack->sortindex[i] > stack->sortindex[i + 1])
+			return (0);
 	return (1);
 }
 
@@ -93,7 +96,7 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 			while ((*stack_a)->index_highest)
 				do_rra(*stack_a);
 		do_pb(stack_a, stack_b);
-	}	
+	}
 	algorithm(stack_a);
 	i = -1;
 	while (++i < 2)
@@ -108,7 +111,7 @@ int	get_maxbit(t_list *stack_a)
 	int maxbit;
 
 	maxbit = 0;
-	while (stack_a->array[stack_a->index_highest] >> maxbit != 0)
+	while (stack_a->sortindex[stack_a->index_highest] >> maxbit != 0)
 		maxbit++;
 	return (maxbit);
 }
@@ -119,26 +122,31 @@ void	sort_algorithm(t_list **stack_a, t_list **stack_b)
 	int	i;
 	int	j;
 	int	size;
-		
+
 	i = 0;
 	size = (*stack_a)->size;
 	maxbit = get_maxbit(*stack_a);
 	while (!is_sorted(*stack_a) && i < maxbit)
 	{
 		j = 0;
-		if (is_sorted(*stack_a))
-			break;
 		while (j < size)
 		{
-			if ((((*stack_a)->array[0] >> i) & 1) == 1)
+			if ((((*stack_a)->sortindex[0] >> i) & 1) == 1)
+			{
 				do_ra(*stack_a);
+			}
 			else
+			{
 				do_pb(stack_a, stack_b);
+			}
+			sortindexx(stack_a);
 			j++;
 		}
-		//printf("i");
 		while ((*stack_b)->size != 0)
+		{
 			do_pa(stack_b, stack_a);
+			sortindexx(stack_a);
+		}
 		i++;
 	}
 }

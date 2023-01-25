@@ -15,7 +15,7 @@
 void	push_func(t_list **src, t_list **dest)
 {
 	int	i;
-	
+
 	(*dest)->size++;
 	reverse_rotate_func(dest);
 	(*dest)->array[0] = (*src)->array[0];

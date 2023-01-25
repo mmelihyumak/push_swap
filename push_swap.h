@@ -23,6 +23,7 @@ typedef struct s_list
 	int	size;
 	int	index_highest;
 	int	index_smallest;
+	int	*sortindex;
 }t_list;
 
 void	find_smallest(t_list *stack);
@@ -58,11 +59,13 @@ int		check_all(int argc, char **argv);
 int		check_duplicate(t_list *stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
 void	print_stack(t_list *stack);
-int 	control(char **argv);
+int		control(char **argv);
 char	**set_argv(char **argv);
-int	check_numbers(char **splitted);
+int		check_numbers(char **splitted);
 void	check_c(char c);
 void	sort_algorithm(t_list **stack_a, t_list **stack_b);
-int	get_maxbit(t_list *stack_a);
+int		get_maxbit(t_list *stack_a);
+void	init_sortindex(t_list **stack);
+void	sortindexx(t_list **stack);
 
 #endif
