@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 00:55:03 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 18:31:30 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 00:43:48 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	push_func(t_list **src, t_list **dest)
 	find_highest(*dest);
 	find_smallest(*src);
 	find_smallest(*dest);
+	push_sort(*src, *dest);
 }
 
 void	do_pa(t_list **src, t_list **dest)

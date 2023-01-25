@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/24 03:07:23 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:51:37 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	sortindexx(t_list **stack)
 
 	size = (*stack)->size;
 	i = 0;
-	init_sortindex(stack);
-	while (size >= 0 && (*stack)->sortindex[i] != size - 1)
+	while ((*stack)->sortindex[i] != size - 1)
 	{
 		j = i + 1;
 		while (j < size)
 		{
 			if ((*stack)->sortindex[i] == (*stack)->sortindex[j])
+			{
 				if ((*stack)->array[i] > (*stack)->array[j])
 				{
 					(*stack)->sortindex[i] += 1;
@@ -49,10 +49,11 @@ void	sortindexx(t_list **stack)
 					(*stack)->sortindex[j] += 1;
 					break ;
 				}
+			}
 			j++;
 		}
 		i++;
-		if (i > size)
+		if (i >= size)
 			i = 0;
 	}
 }
@@ -66,6 +67,7 @@ void	init_sortindex(t_list **stack)
 	i = -1;
 	while (++i < size)
 		(*stack)->sortindex[i] = 0;
+	sortindexx(stack);
 }
 
 void	init_stack_a(t_list **stack, int size, char **argv)
@@ -96,12 +98,13 @@ int main(int argc, char **argv)
 		return (0);
 	stack_a = malloc(sizeof(t_list));
 	stack_b = malloc(sizeof(t_list));
-	stack_b->array = malloc(sizeof(int) * (argc - 1));
 	stack_b->size = 0;
 	if (argc == 2)
 	{
 		splitted = ft_split(argv[1], ' ');
 		init_stack_a(&stack_a, split_len(splitted), splitted);
+		stack_b->array = malloc(sizeof(int) * split_len(splitted));
+		stack_b->sortindex = malloc(sizeof(int) * split_len(splitted));
 		if (!check_duplicate(stack_a))
 			return (0);
 	}
@@ -111,6 +114,8 @@ int main(int argc, char **argv)
 		if (!check_numbers(splitted))
 			return (0);
 		init_stack_a(&stack_a, control(argv), splitted);
+		stack_b->array = malloc(sizeof(int) * split_len(splitted));
+		stack_b->sortindex = malloc(sizeof(int) * split_len(splitted));
 		if (!check_duplicate(stack_a))
 			return (0);
 	}
@@ -120,12 +125,11 @@ int main(int argc, char **argv)
 		sort_five(&stack_a, &stack_b);
 	else if (stack_a->size > 5)
 	{
-		sortindexx(&stack_a);
 		sort_algorithm(&stack_a, &stack_b);
 	}
-	print_stack(stack_a);
+	//print_stack(stack_a);
 	//printf("\nb\n");
 	//print_stack(stack_b);
-	//system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

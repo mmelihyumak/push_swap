@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 03:38:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 23:54:36 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:35:02 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,11 @@ void	sort_algorithm(t_list **stack_a, t_list **stack_b)
 			{
 				do_pb(stack_a, stack_b);
 			}
-			sortindexx(stack_a);
 			j++;
 		}
 		while ((*stack_b)->size != 0)
 		{
 			do_pa(stack_b, stack_a);
-			sortindexx(stack_a);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:34:16 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 18:31:02 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:45:36 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	rotate_func(t_list **stack)
 	(*stack)->array[(*stack)->size - 1] = tmp;
 	find_highest(*stack);
 	find_smallest(*stack);
+	rotate_sort(*stack);
 }
 
 void	do_ra(t_list *stack_a)

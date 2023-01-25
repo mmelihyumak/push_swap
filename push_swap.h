@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:34 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 22:47:26 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:21:23 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	find_highest(t_list *stack);
 void	sort_small(t_list **stack_a);
 void	reverse_rotate_func(t_list **stack);
 void	rotate_func(t_list **stack);
-void	swap_func(t_list **stack);
+void	swap_func(t_list *stack);
 int		is_sorted(t_list *stack);
 int		check_repeat(char **splitted);
 int		ft_isdigit(int c);
@@ -67,5 +67,10 @@ void	sort_algorithm(t_list **stack_a, t_list **stack_b);
 int		get_maxbit(t_list *stack_a);
 void	init_sortindex(t_list **stack);
 void	sortindexx(t_list **stack);
+void	swap_sort(t_list *stack);
+void	rotate_sort(t_list *stack);
+void	reverse_rotate_sort(t_list *stack);
+void	push_sort(t_list *src, t_list *dest);
+void	free_func(char **strings);
 
 #endif

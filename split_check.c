@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 21:30:01 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 19:56:36 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:52:20 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int control(char **argv)
 	{
 		strings = ft_split(argv[i], ' ');
 		len += split_len(strings);
-		free(strings);
+		free_func(strings);
 		i++;
 	}
 	return (len);
@@ -59,6 +59,16 @@ char	**set_argv(char **argv)
 	return (strings);
 }
 
+void	free_func(char **strings)
+{
+	int	i;
+
+	i = -1;
+	while (strings[++i])
+		free(strings[i]);
+	free(strings);
+}
+
 int	check_numbers(char **splitted)
 {
 	int	i;
@@ -66,7 +76,7 @@ int	check_numbers(char **splitted)
 	i = -1;
 	while (splitted[++i])
 	{
-		if (ft_atoi(splitted[0]) < -2147483648 || ft_atoi(splitted[0]) > 2147483647)
+		if (ft_atoi(splitted[i]) < -2147483648 || ft_atoi(splitted[i]) > 2147483647)
 		{
 			write(2, "Error\n", 6);
 			return (0);
