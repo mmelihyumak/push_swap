@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 01:38:53 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 01:42:10 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:59:04 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	rotate_sort(t_list *stack)
 	(stack)->sortindex = tmp_arr;
 	(stack)->sortindex[(stack)->size - 1] = tmp;
 }
+
 void	reverse_rotate_sort(t_list *stack)
 {
 	int	*tmp_arr;
@@ -49,6 +50,7 @@ void	reverse_rotate_sort(t_list *stack)
 	free((stack)->sortindex);
 	(stack)->sortindex = tmp_arr;
 }
+
 void	push_sort(t_list *src, t_list *dest)
 {
 	int	i;

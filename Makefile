@@ -1,6 +1,6 @@
 SRCS			=	check_inputs.c error_check.c ft_atoi.c ft_split.c push_funcs.c push_swap.c \
 					reverse_rotate_funcs.c rotate_funcs.c sort_utils.c sort.c split_check.c \
-					swap_funcs.c
+					swap_funcs.c init_stack.c radix.c free.c
 
 OBJS			=	$(SRCS:.c=.o)
 

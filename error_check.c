@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:20:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/23 19:55:04 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 08:26:38 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ int	check_args(int argc, char **argv)
 		splitted = ft_split(argv[1], ' ');
 		if (split_len(splitted) == 1)
 		{
-			if (ft_atoi(splitted[0]) > 2147483647 || ft_atoi(splitted[0]) < -2147483648)
+			if (ft_atoi(splitted[0]) > 2147483647
+				|| ft_atoi(splitted[0]) < -2147483648)
 				write(2, "Error\n", 6);
 			if (!check_digits(*splitted))
 				write(2, "Error\n", 6);
-			free(splitted);
 			return (0);
 		}
+		else if (split_len(splitted) == 0)
+			return (0);
+		free_func(splitted);
 	}
 	return (1);
 }

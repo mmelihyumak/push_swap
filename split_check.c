@@ -6,13 +6,13 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 21:30:01 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 01:52:20 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 07:38:14 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int control(char **argv)
+int	control(char **argv)
 {
 	char	**strings;
 	int		i;
@@ -76,7 +76,8 @@ int	check_numbers(char **splitted)
 	i = -1;
 	while (splitted[++i])
 	{
-		if (ft_atoi(splitted[i]) < -2147483648 || ft_atoi(splitted[i]) > 2147483647)
+		if (ft_atoi(splitted[i]) < -2147483648
+			|| ft_atoi(splitted[i]) > 2147483647)
 		{
 			write(2, "Error\n", 6);
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:55:57 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/21 16:58:14 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 02:12:53 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	check_digits(char *arg)
 
 	i = -1;
 	while (arg[++i])
-		if ((arg[i] < 48 || arg[i] > 57) && (arg[i] != ' ' && arg[i] != '-' && arg[i] != '+'))
+		if ((arg[i] < 48 || arg[i] > 57)
+			&& (arg[i] != ' ' && arg[i] != '-' && arg[i] != '+'))
 			return (0);
 	i = -1;
 	while (arg[++i])

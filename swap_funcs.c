@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:39:56 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 00:43:09 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 01:57:28 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	do_sa(t_list *stack_a)
 {
 	swap_func(stack_a);
 	write(1, "sa\n", 3);
-	
 }
 
 void	do_sb(t_list *stack_b)

@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:34 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 01:21:23 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 08:21:23 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,16 @@ typedef struct s_list
 
 void	find_smallest(t_list *stack);
 void	find_highest(t_list *stack);
-void	sort_small(t_list **stack_a);
 void	reverse_rotate_func(t_list **stack);
 void	rotate_func(t_list **stack);
 void	swap_func(t_list *stack);
 int		is_sorted(t_list *stack);
-int		check_repeat(char **splitted);
 int		ft_isdigit(int c);
 void	push_func(t_list **src, t_list **dest);
 long	ft_atoi(char *str);
-void	sort_bigger(t_list **stack_a, t_list **stack_b);
 char	**ft_split(const char *s, char c);
-int		check_space(char *first_arg);
 int		check_digits(char *arg);
 int		digits(char **argv);
-int		check_signs(char *argv);
 void	do_pa(t_list **src, t_list **dest);
 void	do_pb(t_list **src, t_list **dest);
 void	do_ra(t_list *stack_a);
@@ -58,7 +53,6 @@ int		split_len(char **splitted);
 int		check_all(int argc, char **argv);
 int		check_duplicate(t_list *stack);
 void	sort_five(t_list **stack_a, t_list **stack_b);
-void	print_stack(t_list *stack);
 int		control(char **argv);
 char	**set_argv(char **argv);
 int		check_numbers(char **splitted);
@@ -72,5 +66,10 @@ void	rotate_sort(t_list *stack);
 void	reverse_rotate_sort(t_list *stack);
 void	push_sort(t_list *src, t_list *dest);
 void	free_func(char **strings);
+void	init_stack_a(t_list **stack, int size, char **argv);
+int		helper_function(t_list *stack_a, t_list *stack_b, char **argv);
+int		help_function(t_list *stack_a, t_list *stack_b, char **argv);
+void	algorithm(t_list **stack);
+void	free_arrays(t_list *stack_b);
 
 #endif
