@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:17 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 08:26:51 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/26 08:29:08 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	helper_function(t_list *stack_a, t_list *stack_b, char **argv)
 	char	**splitted;
 
 	splitted = set_argv(argv);
-	
 	init_stack_a(&stack_a, split_len(splitted), splitted);
 	stack_b->array = malloc(sizeof(int) * split_len(splitted));
 	stack_b->sortindex = malloc(sizeof(int) * split_len(splitted));
