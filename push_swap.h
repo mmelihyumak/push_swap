@@ -6,7 +6,7 @@
 /*   By: muyumak <muyumak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:31:34 by muyumak           #+#    #+#             */
-/*   Updated: 2023/01/26 08:21:23 by muyumak          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:29:40 by muyumak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -32,7 +31,6 @@ void	reverse_rotate_func(t_list **stack);
 void	rotate_func(t_list **stack);
 void	swap_func(t_list *stack);
 int		is_sorted(t_list *stack);
-int		ft_isdigit(int c);
 void	push_func(t_list **src, t_list **dest);
 long	ft_atoi(char *str);
 char	**ft_split(const char *s, char c);
